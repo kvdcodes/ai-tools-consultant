@@ -38,10 +38,41 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.service-card, .work-item, .stat').forEach(el => {
+document.querySelectorAll('.service-card, .work-item').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
+
+// Email form submission
+const emailForm = document.getElementById('email-form');
+const formSuccess = document.getElementById('form-success');
+
+if (emailForm) {
+  emailForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email-input').value;
+
+    // Send to Formspree (replace YOUR_FORM_ID with your Formspree endpoint)
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => {
+      if (response.ok) {
+        emailForm.style.display = 'none';
+        formSuccess.classList.add('show');
+      } else {
+        // Fallback: open mailto
+        window.location.href = `mailto:hello@aitoolsconsultant.com?subject=Inquiry&body=Please contact me at ${email}`;
+      }
+    })
+    .catch(() => {
+      // Fallback: open mailto
+      window.location.href = `mailto:hello@aitoolsconsultant.com?subject=Inquiry&body=Please contact me at ${email}`;
+    });
+  });
+}
 
 // Add CSS for fade-in animation
 const style = document.createElement('style');

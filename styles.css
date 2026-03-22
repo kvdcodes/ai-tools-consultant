@@ -275,44 +275,48 @@ a {
   opacity: 0.7;
 }
 
-/* ---- Projects Grid ---- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  padding: 1rem 2.5rem 4rem;
+/* ---- Who We Help ---- */
+.who-we-help {
+  padding: 5rem 2.5rem 4rem;
+  border-top: 2px solid var(--orange);
+  overflow: hidden;
 }
 
-.project-card {
-  position: relative;
-  border-radius: 8px;
-  overflow: visible;
-}
-
-.project-img-1 {
+.industries-marquee {
+  overflow: hidden;
   width: 100%;
-  height: clamp(250px, 30vw, 400px);
-  background: linear-gradient(145deg, #8BAFC4 0%, #6B9FBA 40%, #5A8DAA 70%, #4A7D9A 100%);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.project-img-1::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 70%, rgba(232, 77, 14, 0.1) 0%, transparent 50%);
+.industries-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
 }
 
-.project-img-2 {
-  width: 100%;
-  height: clamp(250px, 30vw, 400px);
-  background: linear-gradient(160deg, #D4A020 0%, #C89520 30%, #B8850E 60%, #A67508 100%);
+.industry-tag {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  padding: 0.75rem 1.75rem;
+  border: 2px solid var(--orange);
+  border-radius: 50px;
+  color: var(--orange);
+  white-space: nowrap;
+  transition: all 0.3s;
 }
 
-.project-img-2::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 60% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+.industry-tag:hover {
+  background: var(--orange);
+  color: var(--cream);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ---- Services ---- */
@@ -453,31 +457,6 @@ a {
   margin-bottom: 3rem;
 }
 
-.about-stats {
-  display: flex;
-  gap: 4rem;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 3rem;
-  color: var(--orange);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: var(--warm-gray);
-  font-weight: 500;
-}
 
 /* ---- Contact / CTA ---- */
 .contact {
@@ -519,6 +498,52 @@ a {
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+/* Email Form */
+.email-form {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--cream);
+  border-radius: 50px;
+  background: rgba(255,255,255,0.15);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.email-input::placeholder {
+  color: rgba(250, 245, 238, 0.6);
+}
+
+.email-input:focus {
+  background: rgba(255,255,255,0.25);
+  border-color: white;
+}
+
+.form-success {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.form-success.show {
+  opacity: 1;
+}
+
 /* ---- Footer ---- */
 .footer {
   display: flex;
@@ -530,20 +555,6 @@ a {
   border-top: 1px solid rgba(0,0,0,0.05);
 }
 
-.footer-right {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footer-right a {
-  color: var(--orange);
-  font-weight: 500;
-  transition: opacity 0.2s;
-}
-
-.footer-right a:hover {
-  opacity: 0.7;
-}
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
@@ -568,9 +579,8 @@ a {
     padding: 2rem 1.5rem 1rem;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem 1.5rem 3rem;
+  .who-we-help {
+    padding: 3rem 1.5rem;
   }
 
   .services,
@@ -590,10 +600,6 @@ a {
     gap: 0.75rem;
   }
 
-  .about-stats {
-    flex-direction: column;
-    gap: 2rem;
-  }
 
   .contact {
     padding: 4rem 1.5rem;
