@@ -52,24 +52,26 @@ if (emailForm) {
     e.preventDefault();
     const email = document.getElementById('email-input').value;
 
-    // Send to Formspree (replace YOUR_FORM_ID with your Formspree endpoint)
+    // Send to Formspree
     fetch('https://formspree.io/f/xvzwjkeg', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify({ email: email })
     })
-    .then(response => {
-      if (response.ok) {
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
         emailForm.style.display = 'none';
         formSuccess.classList.add('show');
       } else {
-        // Fallback: open mailto
-        window.location.href = `mailto:hello@aitoolsconsultant.com?subject=Inquiry&body=Please contact me at ${email}`;
+        alert('Something went wrong. Please try again.');
       }
     })
     .catch(() => {
-      // Fallback: open mailto
-      window.location.href = `mailto:hello@aitoolsconsultant.com?subject=Inquiry&body=Please contact me at ${email}`;
+      alert('Something went wrong. Please try again.');
     });
   });
 }
