@@ -53,7 +53,7 @@ if (emailForm) {
     const email = document.getElementById('email-input').value;
 
     // Send to Formspree (replace YOUR_FORM_ID with your Formspree endpoint)
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    fetch('https://formspree.io/f/xvzwjkeg', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
