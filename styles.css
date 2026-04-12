@@ -122,6 +122,20 @@ a {
   margin-bottom: 1.5rem;
 }
 
+.hero-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--blue);
+  margin-top: 1.5rem;
+}
+
+.hero-price span {
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--orange);
+}
+
 /* ---- Stats strip ---- */
 .stats {
   display: grid;
