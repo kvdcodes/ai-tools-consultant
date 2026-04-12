@@ -112,6 +112,42 @@ a {
   padding: 4rem 2.5rem 2rem;
 }
 
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Stats strip ---- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 3rem 2.5rem 4rem;
+  border-top: 2px solid var(--orange);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  color: var(--orange);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--charcoal);
+  margin-top: 0.75rem;
+}
+
 .hero-title {
   font-family: var(--font-display);
   font-weight: 900;
@@ -131,6 +167,12 @@ a {
 
 .hero-title .title-line:last-child {
   font-size: clamp(5rem, 16vw, 14rem);
+}
+
+.hero-title--sub .title-line,
+.hero-title--sub .title-line:first-child,
+.hero-title--sub .title-line:last-child {
+  font-size: clamp(4rem, 12vw, 10rem);
 }
 
 .hero-subtitle {
@@ -586,6 +628,13 @@ a {
   .work,
   .about {
     padding: 3rem 1.5rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem 1.5rem 3rem;
+    text-align: center;
   }
 
   .services-grid {
